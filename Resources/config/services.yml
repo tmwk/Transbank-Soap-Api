@@ -1,0 +1,4 @@
+services:
+#    tmwk_transbank.example:
+#        class: Tmwk\TransbankBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
