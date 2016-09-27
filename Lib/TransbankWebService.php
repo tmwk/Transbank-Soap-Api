@@ -2,10 +2,8 @@
 namespace Tmwk\TransbankBundle\Lib;
 
 use Tmwk\TransbankBundle\Lib\Exceptions\InvalidCertificateException;
-use Tmwk\TransbankBundle\Lib\Log\LogHandler;
 use Tmwk\TransbankBundle\Lib\WebpayOneClick\WebpayOneClickWebService;
 use Tmwk\TransbankBundle\Lib\WssParse\SoapValidationParse as SoapValidation;
-use Tmwk\TransbankBundle\Lib\Log\LoggerInterface;
 
 /**
  * Class TransbankWebService
@@ -86,7 +84,7 @@ abstract class TransbankWebService
 
         if ($validation !== true) {
             $msg = 'The Transbank response fails on the certificate signature validation. Response doesn\t comes from Transbank';
-            LogHandler::log($msg, LoggerInterface::LEVEL_ERROR);
+//            $log->error($msg;
 
             throw new InvalidCertificateException($msg);
         }

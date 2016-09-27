@@ -47,28 +47,28 @@ class WebpayOneClickWebService extends TransbankWebService
      * @var array
      */
     protected static $classmap = array(
-        'removeUser' => removeUser::class,
-        'oneClickRemoveUserInput' => oneClickRemoveUserInput::class,
-        'baseBean' => baseBean::class,
-        'removeUserResponse' => removeUserResponse::class,
-        'initInscription' => initInscription::class,
-        'oneClickInscriptionInput' => oneClickInscriptionInput::class,
-        'initInscriptionResponse' => initInscriptionResponse::class,
-        'oneClickInscriptionOutput' => oneClickInscriptionOutput::class,
-        'finishInscription' => finishInscription::class,
-        'oneClickFinishInscriptionInput' => oneClickFinishInscriptionInput::class,
-        'finishInscriptionResponse' => finishInscriptionResponse::class,
+        'removeUser'                      => removeUser::class,
+        'oneClickRemoveUserInput'         => oneClickRemoveUserInput::class,
+        'baseBean'                        => baseBean::class,
+        'removeUserResponse'              => removeUserResponse::class,
+        'initInscription'                 => initInscription::class,
+        'oneClickInscriptionInput'        => oneClickInscriptionInput::class,
+        'initInscriptionResponse'         => initInscriptionResponse::class,
+        'oneClickInscriptionOutput'       => oneClickInscriptionOutput::class,
+        'finishInscription'               => finishInscription::class,
+        'oneClickFinishInscriptionInput'  => oneClickFinishInscriptionInput::class,
+        'finishInscriptionResponse'       => finishInscriptionResponse::class,
         'oneClickFinishInscriptionOutput' => oneClickFinishInscriptionOutput::class,
-        'codeReverseOneClick' => codeReverseOneClick::class,
-        'oneClickReverseInput' => oneClickReverseInput::class,
-        'codeReverseOneClickResponse' => codeReverseOneClickResponse::class,
-        'oneClickReverseOutput' => oneClickReverseOutput::class,
-        'authorize' => authorize::class,
-        'oneClickPayInput' => oneClickPayInput::class,
-        'authorizeResponse' => authorizeResponse::class,
-        'oneClickPayOutput' => oneClickPayOutput::class,
-        'reverse' => reverse::class,
-        'reverseResponse' => reverseResponse::class
+        'codeReverseOneClick'             => codeReverseOneClick::class,
+        'oneClickReverseInput'            => oneClickReverseInput::class,
+        'codeReverseOneClickResponse'     => codeReverseOneClickResponse::class,
+        'oneClickReverseOutput'           => oneClickReverseOutput::class,
+        'authorize'                       => authorize::class,
+        'oneClickPayInput'                => oneClickPayInput::class,
+        'authorizeResponse'               => authorizeResponse::class,
+        'oneClickPayOutput'               => oneClickPayOutput::class,
+        'reverse'                         => reverse::class,
+        'reverseResponse'                 => reverseResponse::class
     );
 
 
@@ -81,7 +81,7 @@ class WebpayOneClickWebService extends TransbankWebService
      */
     public function initInscription(oneClickInscriptionInput $oneClickInscriptionInput)
     {
-        $initInscription = new initInscription();
+        $initInscription       = new initInscription();
         $initInscription->arg0 = $oneClickInscriptionInput;
         return $this->callSoapMethod('initInscription', $initInscription);
     }
@@ -95,7 +95,7 @@ class WebpayOneClickWebService extends TransbankWebService
      */
     public function finishInscription(oneClickFinishInscriptionInput $finishInscriptionInput)
     {
-        $finishInscription = new finishInscription();
+        $finishInscription       = new finishInscription();
         $finishInscription->arg0 = $finishInscriptionInput;
 
         return $this->callSoapMethod('finishInscription', $finishInscription);
@@ -110,7 +110,7 @@ class WebpayOneClickWebService extends TransbankWebService
      */
     public function authorize(oneClickPayInput $authorizeInput)
     {
-        $authorize = new authorize();
+        $authorize       = new authorize();
         $authorize->arg0 = $authorizeInput;
         return $this->callSoapMethod('authorize', $authorize);
     }
@@ -124,7 +124,7 @@ class WebpayOneClickWebService extends TransbankWebService
      */
     public function codeReverseOneClick(oneClickReverseInput $codeReverseOneClickInput)
     {
-        $codeReverseOneClick = new codeReverseOneClick();
+        $codeReverseOneClick       = new codeReverseOneClick();
         $codeReverseOneClick->arg0 = $codeReverseOneClickInput;
 
         return $this->callSoapMethod('codeReverseOneClick', $codeReverseOneClick);
@@ -138,7 +138,7 @@ class WebpayOneClickWebService extends TransbankWebService
      */
     public function removeUser(oneClickRemoveUserInput $removeUserInput)
     {
-        $removeUser = new removeUser();
+        $removeUser       = new removeUser();
         $removeUser->arg0 = $removeUserInput;
         return $this->callSoapMethod('removeUser', $removeUser);
     }

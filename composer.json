@@ -14,5 +14,7 @@
     },
     "autoload": {
         "psr-0": { "Tmwk\\TransbankBundle": "" }
-    }
+    },
+
+    "target-dir": "Tmwk/TransbankBundle"
 }
