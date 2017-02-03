@@ -11,7 +11,7 @@ use Tmwk\TransbankBundle\Lib\Logger;
  * Class TransbankWebService
  * @package Tmwk\TransbankBundle\Lib
  */
-abstract class TransbankWebService 
+abstract class TransbankWebService
 {
 
     /**
@@ -109,7 +109,7 @@ abstract class TransbankWebService
 
         try {
             $response = call_user_func_array([$this->getSoapClient(), $method], $args);
-            Logger::log()->info('response_object', $response);
+            Logger::log()->info('response_object', array($response));
         } catch (\SoapFault $e) {
             Logger::log()->error('SOAP ERROR (' . $e->faultcode . '): ' . $e->getMessage());
             throw new \SoapFault($e->faultcode, $e->faultstring);
@@ -118,7 +118,7 @@ abstract class TransbankWebService
         //Validate the signature of the response
         $this->validateResponseCertificate();
 
-        Logger::$log->info('Response certificate validated successfully');
+        Logger::log()->info('Response certificate validated successfully');
 
         return $response;
     }
