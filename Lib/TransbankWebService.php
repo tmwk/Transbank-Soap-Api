@@ -4,13 +4,16 @@ namespace Tmwk\TransbankBundle\Lib;
 use Tmwk\TransbankBundle\Lib\Exceptions\InvalidCertificateException;
 use Tmwk\TransbankBundle\Lib\WebpayOneClick\WebpayOneClickWebService;
 use Tmwk\TransbankBundle\Lib\WssParse\SoapValidationParse as SoapValidation;
+use Tmwk\TransbankBundle\Lib\Logger;
+
 
 /**
  * Class TransbankWebService
  * @package Tmwk\TransbankBundle\Lib
  */
-abstract class TransbankWebService
+abstract class TransbankWebService 
 {
+
     /**
      * @var TransbankSoap
      */
@@ -84,7 +87,7 @@ abstract class TransbankWebService
 
         if ($validation !== true) {
             $msg = 'The Transbank response fails on the certificate signature validation. Response doesn\t comes from Transbank';
-//            $log->error($msg;
+            Logger::log()->error($msg);
 
             throw new InvalidCertificateException($msg);
         }
@@ -102,20 +105,20 @@ abstract class TransbankWebService
         $args = func_get_args();
         array_shift($args);
 
-//        $log->info($args, 'request_object');
+        Logger::log()->info('request_object', $args);
 
         try {
             $response = call_user_func_array([$this->getSoapClient(), $method], $args);
-//            $log->info($response, 'response_object');
+            Logger::log()->info('response_object', $response);
         } catch (\SoapFault $e) {
-//            $log->error('SOAP ERROR (' . $e->faultcode . '): ' . $e->getMessage(), 'error');
+            Logger::log()->error('SOAP ERROR (' . $e->faultcode . '): ' . $e->getMessage());
             throw new \SoapFault($e->faultcode, $e->faultstring);
         }
 
         //Validate the signature of the response
         $this->validateResponseCertificate();
 
-//        $log->info('Response certificate validated successfully', 'response_certificate_validated');
+        Logger::$log->info('Response certificate validated successfully');
 
         return $response;
     }

@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "php": ">= 5.5.0"
+        "php": ">= 5.5.0",
+        "monolog/monolog": "~1.18"
     },
     "autoload": {
         "psr-0": { "Tmwk\\TransbankBundle": "" }

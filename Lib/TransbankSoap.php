@@ -13,7 +13,6 @@ use Tmwk\TransbankBundle\Lib\WssParse\XMLSecurityKeyParse as XMLSecurityKey;
  */
 class TransbankSoap extends SoapClient
 {
-
     /**
      * Client's private key
      * @var string
@@ -69,7 +68,7 @@ class TransbankSoap extends SoapClient
      */
     public function __doRequest($request, $location, $saction, $version, $one_way = NULL)
     {
-//        $log->info(['location' => $location, 'xml' => $request], 'unsigned_request_raw');
+        Logger::log()->info('unsigned_request_raw', ['location' => $location, 'xml' => $request]);
 
         $doc = new \DOMDocument('1.0');
         $doc->loadXML($request);
@@ -84,13 +83,13 @@ class TransbankSoap extends SoapClient
         $objKey->generateSessionKey();
 
         $signed_request = $objWSSE->saveXML();
-//        $log->info(['location' => $location, 'xml' => $signed_request], 'signed_request_raw');
+        Logger::log()->info('signed_request_raw', ['location' => $location, 'xml' => $signed_request]);
 
         $retVal = parent::__doRequest($signed_request, $location, $saction,
             $version, $one_way);
         $doc    = new \DOMDocument();
         $doc->loadXML($retVal);
-//        $log->info(['location' => $location, 'xml' => $retVal], 'response_raw');
+        Logger::log()->info('response_raw', ['location' => $location, 'xml' => $retVal]);
         return $doc->saveXML();
     }
 
