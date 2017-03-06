@@ -1,8 +1,6 @@
 <?php
 namespace Tmwk\TransbankBundle\Lib;
 
-use Tmwk\TransbankBundle\Lib\Log\LoggerInterface;
-use Tmwk\TransbankBundle\Lib\Log\LogHandler;
 use SoapClient;
 use Tmwk\TransbankBundle\Lib\WssParse\WSSESoapParse as WSSESoap;
 use Tmwk\TransbankBundle\Lib\WssParse\XMLSecurityKeyParse as XMLSecurityKey;

@@ -19,7 +19,7 @@ class Logger
     public static function log()
     {
         $logger = new Monolog('transbank');
-        $logger->pushHandler(new StreamHandler(__DIR__ . '/logs/transbank.log', Monolog::DEBUG));
+        $logger->pushHandler(new StreamHandler(__DIR__ . '/../../../../../../app/logs/transbank.log', Monolog::DEBUG));
 
         return  $logger->pushHandler(new FirePHPHandler());
     }
