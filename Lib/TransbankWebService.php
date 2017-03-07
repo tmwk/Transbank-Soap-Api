@@ -109,7 +109,7 @@ abstract class TransbankWebService
 
         try {
             $response = call_user_func_array([$this->getSoapClient(), $method], $args);
-            Logger::log()->info('response_object', array($response));
+            Logger::log()->info('response_object', $response);
         } catch (\SoapFault $e) {
             Logger::log()->error('SOAP ERROR (' . $e->faultcode . '): ' . $e->getMessage());
             throw new \SoapFault($e->faultcode, $e->faultstring);
