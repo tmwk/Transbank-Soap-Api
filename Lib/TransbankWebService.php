@@ -118,7 +118,7 @@ abstract class TransbankWebService
         //Validate the signature of the response
         $this->validateResponseCertificate();
 
-        Logger::$log->info('Response certificate validated successfully');
+        Logger::log()->info('Response certificate validated successfully');
 
         return $response;
     }
